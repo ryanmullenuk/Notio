@@ -231,7 +231,7 @@ h3 {
   text-underline-offset: 3px;
 }
 
-.site-header {
+body > .site-header {
   position: sticky;
   z-index: 40;
   top: 0;
