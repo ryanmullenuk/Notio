@@ -23,6 +23,14 @@ export default function TenderSupportPage() {
             </div>
             <div className="coming-soon-panel">
               <span>COMING SOON</span>
+              <div className="coming-soon-icon-frame" data-scroll-panel>
+                <img
+                  src="/assets/tender_support_dark.png"
+                  alt="Tender support service"
+                  data-scroll-media
+                  data-scroll-distance="72"
+                />
+              </div>
               <p>
                 Detailed content for this service is being prepared. If you
                 have an immediate tender support requirement, you can still
