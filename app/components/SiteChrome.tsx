@@ -22,6 +22,12 @@ export function SiteHeader() {
         <div className="shell header-inner">
           <a className="brand" href="/" aria-label="Notio Consulting home">
             <img
+              className="brand-badge"
+              src="/assets/icon_badge_clear.png"
+              alt=""
+              aria-hidden="true"
+            />
+            <img
               className="brand-logo"
               src="/assets/logo_top_left.png"
               alt="Notio Consulting"
