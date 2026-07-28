@@ -1,8 +1,9 @@
 const navigation = [
-  { label: "Assisted living", href: "/assisted-living" },
-  { label: "Door entry", href: "/door-entry-systems" },
-  { label: "Digital 2027", href: "/digital-switchover-2027" },
-  { label: "Fire safety", href: "/smoke-detection-systems" },
+  { label: "ASSISTED LIVING", href: "/assisted-living" },
+  { label: "DOOR ENTRY", href: "/door-entry-systems" },
+  { label: "FIRE SAFETY", href: "/smoke-detection-systems" },
+  { label: "DIGITAL 2027", href: "/digital-switchover-2027" },
+  { label: "TENDER SUPPORT", href: "/tender-support" },
 ];
 
 export function SiteHeader() {
