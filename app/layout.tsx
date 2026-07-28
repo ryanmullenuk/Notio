@@ -16,10 +16,26 @@ export const metadata: Metadata = {
   creator: "Notio Consulting",
   publisher: "Notio Consulting",
   category: "Life safety consultancy",
+  manifest: "/site.webmanifest",
   icons: {
-    icon: "/notio-logo.jpg",
-    shortcut: "/notio-logo.jpg",
-    apple: "/notio-logo.jpg",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+      { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [
+      {
+        url: "/apple-touch-icon.png",
+        type: "image/png",
+        sizes: "180x180",
+      },
+    ],
+  },
+  appleWebApp: {
+    capable: true,
+    title: "Notio Consulting",
+    statusBarStyle: "black-translucent",
   },
   openGraph: {
     type: "website",
