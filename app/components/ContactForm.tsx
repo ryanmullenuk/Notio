@@ -1,6 +1,7 @@
 "use client";
 
 import type { FormEvent } from "react";
+import { ButtonContent } from "./MotionPrimitives";
 
 export function ContactForm() {
   function submitEnquiry(event: FormEvent<HTMLFormElement>) {
@@ -12,7 +13,7 @@ export function ContactForm() {
     const enquiryType = String(data.get("enquiryType") ?? "");
     const message = String(data.get("message") ?? "");
 
-    const subject = `Notio website enquiry — ${enquiryType || "General enquiry"}`;
+    const subject = `Notio website enquiry - ${enquiryType || "General enquiry"}`;
     const body = [
       `Name: ${name}`,
       `Email: ${email}`,
@@ -74,7 +75,7 @@ export function ContactForm() {
         </span>
       </label>
       <button className="button button-dark form-submit" type="submit">
-        Prepare email enquiry <span aria-hidden="true">↗</span>
+        <ButtonContent label="Prepare email enquiry" />
       </button>
     </form>
   );

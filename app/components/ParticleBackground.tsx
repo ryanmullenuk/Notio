@@ -12,9 +12,9 @@ type Particle = {
 };
 
 const particleColours = [
-  "rgba(239, 178, 25, 0.82)",
-  "rgba(255, 255, 255, 0.58)",
-  "rgba(23, 23, 22, 0.32)",
+  "rgba(239, 178, 25, 0.94)",
+  "rgba(255, 255, 255, 0.8)",
+  "rgba(23, 23, 22, 0.72)",
 ];
 
 export function ParticleBackground() {
@@ -77,7 +77,7 @@ export function ParticleBackground() {
       context.moveTo(firstX, firstY);
       context.lineTo(secondX, secondY);
       context.strokeStyle = `rgba(239, 178, 25, ${
-        ((range - distance) / range) * 0.2 * strength
+        ((range - distance) / range) * 0.27 * strength
       })`;
       context.lineWidth = 0.75;
       context.stroke();

@@ -1,3 +1,4 @@
+import { ButtonContent, MotionHeading } from "./MotionPrimitives";
 import { SiteFooter, SiteHeader } from "./SiteChrome";
 
 type ServicePageProps = {
@@ -38,11 +39,11 @@ export function ServicePage({
           <div className="shell service-hero-grid">
             <div>
               <p className="eyebrow">{eyebrow}</p>
-              <h1>{title}</h1>
+              <MotionHeading as="h1">{title}</MotionHeading>
               <p className="service-intro">{intro}</p>
               <div className="button-row">
                 <a className="button button-yellow" href="/#contact">
-                  Discuss your requirements <span aria-hidden="true">↗</span>
+                  <ButtonContent label="Discuss your requirements" />
                 </a>
                 <a
                   className="text-link text-link-light"
@@ -57,8 +58,13 @@ export function ServicePage({
                 <span>Notio service</span>
                 <strong>{code}</strong>
               </div>
-              <div className="service-icon-frame">
-                <img src={iconSrc} alt={iconAlt} />
+              <div className="service-icon-frame" data-scroll-panel>
+                <img
+                  src={iconSrc}
+                  alt={iconAlt}
+                  data-scroll-media
+                  data-scroll-distance="72"
+                />
               </div>
               <p>{statement}</p>
             </div>
@@ -70,7 +76,9 @@ export function ServicePage({
             <div className="section-heading split-heading">
               <div>
                 <p className="eyebrow eyebrow-dark">Where we support</p>
-                <h2>Clear advice at the points that matter.</h2>
+                <MotionHeading as="h2">
+                  Clear advice at the points that matter.
+                </MotionHeading>
               </div>
               <p>
                 The scope is shaped around the decision, the estate and the
@@ -94,12 +102,14 @@ export function ServicePage({
           <div className="shell deliverable-grid">
             <div>
               <p className="eyebrow eyebrow-dark">What you can receive</p>
-              <h2>Useful outputs, built for a decision.</h2>
+              <MotionHeading as="h2">
+                Useful outputs, built for a decision.
+              </MotionHeading>
             </div>
             <ul className="tick-list">
               {deliverables.map((item) => (
                 <li key={item}>
-                  <span aria-hidden="true">✓</span>
+                  <span className="tick-mark" aria-hidden="true" />
                   {item}
                 </li>
               ))}
@@ -111,7 +121,9 @@ export function ServicePage({
           <div className="shell considerations-grid">
             <div>
               <p className="eyebrow eyebrow-dark">Practical considerations</p>
-              <h2>What needs to be understood before a solution is fixed.</h2>
+              <MotionHeading as="h2">
+                What needs to be understood before a solution is fixed.
+              </MotionHeading>
             </div>
             <ul>
               {considerations.map((item) => (
@@ -131,13 +143,24 @@ export function ServicePage({
           <div className="shell service-cta-inner">
             <div>
               <p className="eyebrow">A practical first step</p>
-              <h2>Start with a free 30-minute fact-find call.</h2>
+              <MotionHeading as="h2">
+                Start with a free 30-minute fact-find call.
+              </MotionHeading>
             </div>
-            <div className="service-cta-icon" aria-hidden="true">
-              <img src="/assets/fact_find_call.png" alt="" />
+            <div
+              className="service-cta-icon"
+              aria-hidden="true"
+              data-scroll-panel
+            >
+              <img
+                src="/assets/fact_find_call.png"
+                alt=""
+                data-scroll-media
+                data-scroll-distance="42"
+              />
             </div>
             <a className="button button-yellow" href="/#contact">
-              Arrange a conversation <span aria-hidden="true">↗</span>
+              <ButtonContent label="Arrange a conversation" />
             </a>
           </div>
         </section>

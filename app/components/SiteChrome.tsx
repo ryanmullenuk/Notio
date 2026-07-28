@@ -1,3 +1,5 @@
+import { ButtonContent } from "./MotionPrimitives";
+
 const navigation = [
   { label: "ASSISTED LIVING", href: "/assisted-living" },
   { label: "DOOR ENTRY", href: "/door-entry-systems" },
@@ -14,7 +16,7 @@ export function SiteHeader() {
         href="mailto:hello@notio.uk?subject=Free%2030-minute%20fact-find%20call"
       >
         <span>Free 30-minute fact-find call</span>
-        <strong>Arrange a conversation&nbsp; ↗</strong>
+        <strong>Arrange a conversation</strong>
       </a>
       <header className="site-header">
         <div className="shell header-inner">
@@ -35,7 +37,7 @@ export function SiteHeader() {
           </nav>
 
           <a className="header-contact" href="/#contact">
-            Contact <span aria-hidden="true">↗</span>
+            <ButtonContent label="Contact" />
           </a>
 
           <details className="mobile-menu">
@@ -90,7 +92,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="shell footer-bottom">
-        <span>© {new Date().getFullYear()} Notio Consulting</span>
+        <span>Copyright {new Date().getFullYear()} Notio Consulting</span>
         <span>Life safety for residents. Compliance for organisations.</span>
       </div>
     </footer>
