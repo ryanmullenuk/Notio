@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 type Particle = {
   x: number;
@@ -11,60 +11,106 @@ type Particle = {
   colour: string;
 };
 
+type SurfaceState = {
+  element: HTMLElement;
+  canvas: HTMLCanvasElement;
+  context: CanvasRenderingContext2D;
+  particles: Particle[];
+  pointer: { x: number; y: number; active: boolean };
+  width: number;
+  height: number;
+  visible: boolean;
+};
+
+const surfaceSelector = [
+  ".hero",
+  ".section-dark",
+  ".service-hero",
+  ".service-cta",
+  ".policy-hero",
+  ".coming-soon-hero",
+  ".site-footer",
+].join(",");
+
 const particleColours = [
-  "rgba(239, 178, 25, 0.94)",
-  "rgba(255, 255, 255, 0.8)",
-  "rgba(23, 23, 22, 0.72)",
+  "rgba(255, 255, 255, 0.72)",
+  "rgba(255, 255, 255, 0.54)",
+  "rgba(255, 255, 255, 0.42)",
+  "rgba(239, 178, 25, 0.64)",
 ];
 
 export function ParticleBackground() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const context = canvas.getContext("2d");
-    if (!context) return;
-
     const reducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
-    const pointer = { x: -1000, y: -1000, active: false };
-    let particles: Particle[] = [];
-    let frame = 0;
-    let width = 0;
-    let height = 0;
+    const finePointer = window.matchMedia(
+      "(hover: hover) and (pointer: fine)",
+    ).matches;
+    const mobile = window.matchMedia("(max-width: 780px)").matches;
 
-    const createParticles = () => {
+    const states = Array.from(
+      document.querySelectorAll<HTMLElement>(surfaceSelector),
+    ).map<SurfaceState | null>((element) => {
+      const canvas = document.createElement("canvas");
+      const context = canvas.getContext("2d");
+      if (!context) return null;
+
+      canvas.className = "particle-surface";
+      canvas.setAttribute("aria-hidden", "true");
+      element.classList.add("particle-surface-host");
+      element.prepend(canvas);
+
+      return {
+        element,
+        canvas,
+        context,
+        particles: [],
+        pointer: { x: -1000, y: -1000, active: false },
+        width: 0,
+        height: 0,
+        visible: true,
+      };
+    }).filter((state): state is SurfaceState => state !== null);
+
+    const createParticles = (state: SurfaceState) => {
+      const density = mobile ? 52000 : 30000;
+      const minimum = mobile ? 10 : 16;
+      const maximum = mobile ? 28 : 52;
       const count = Math.max(
-        24,
-        Math.min(72, Math.round((width * height) / 26000)),
+        minimum,
+        Math.min(maximum, Math.round((state.width * state.height) / density)),
       );
+      const speed = mobile ? 0.09 : 0.16;
 
-      particles = Array.from({ length: count }, (_, index) => ({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.34,
-        vy: (Math.random() - 0.5) * 0.34,
-        radius: 1 + Math.random() * 0.8,
+      state.particles = Array.from({ length: count }, (_, index) => ({
+        x: Math.random() * state.width,
+        y: Math.random() * state.height,
+        vx: (Math.random() - 0.5) * speed,
+        vy: (Math.random() - 0.5) * speed,
+        radius: 0.8 + Math.random() * 0.75,
         colour: particleColours[index % particleColours.length],
       }));
     };
 
-    const resize = () => {
+    const resizeSurface = (state: SurfaceState) => {
+      const width = state.element.clientWidth;
+      const height = state.element.clientHeight;
+      if (width < 1 || height < 1) return;
+
       const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = Math.round(width * pixelRatio);
-      canvas.height = Math.round(height * pixelRatio);
-      canvas.style.width = `${width}px`;
-      canvas.style.height = `${height}px`;
-      context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-      createParticles();
+      state.width = width;
+      state.height = height;
+      state.canvas.width = Math.round(width * pixelRatio);
+      state.canvas.height = Math.round(height * pixelRatio);
+      state.canvas.style.width = `${width}px`;
+      state.canvas.style.height = `${height}px`;
+      state.context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+      createParticles(state);
     };
 
     const drawConnection = (
+      context: CanvasRenderingContext2D,
       firstX: number,
       firstY: number,
       secondX: number,
@@ -76,17 +122,18 @@ export function ParticleBackground() {
       context.beginPath();
       context.moveTo(firstX, firstY);
       context.lineTo(secondX, secondY);
-      context.strokeStyle = `rgba(239, 178, 25, ${
-        ((range - distance) / range) * 0.27 * strength
+      context.strokeStyle = `rgba(255, 255, 255, ${
+        ((range - distance) / range) * 0.15 * strength
       })`;
-      context.lineWidth = 0.75;
+      context.lineWidth = 0.65;
       context.stroke();
     };
 
-    const render = () => {
+    const renderSurface = (state: SurfaceState) => {
+      const { context, width, height } = state;
       context.clearRect(0, 0, width, height);
 
-      particles.forEach((particle, index) => {
+      state.particles.forEach((particle, index) => {
         if (!reducedMotion) {
           particle.x += particle.vx;
           particle.y += particle.vy;
@@ -104,71 +151,119 @@ export function ParticleBackground() {
         context.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
         context.fill();
 
-        for (let next = index + 1; next < particles.length; next += 1) {
-          const neighbour = particles[next];
+        for (let next = index + 1; next < state.particles.length; next += 1) {
+          const neighbour = state.particles[next];
           const xDistance = particle.x - neighbour.x;
           const yDistance = particle.y - neighbour.y;
           const distance = Math.hypot(xDistance, yDistance);
 
-          if (distance < 118) {
+          if (distance < 124) {
             drawConnection(
+              context,
               particle.x,
               particle.y,
               neighbour.x,
               neighbour.y,
               distance,
-              118,
+              124,
             );
           }
         }
 
-        if (pointer.active) {
-          const xDistance = particle.x - pointer.x;
-          const yDistance = particle.y - pointer.y;
+        if (state.pointer.active) {
+          const xDistance = particle.x - state.pointer.x;
+          const yDistance = particle.y - state.pointer.y;
           const distance = Math.hypot(xDistance, yDistance);
 
-          if (distance < 150) {
+          if (distance < 155) {
             drawConnection(
+              context,
               particle.x,
               particle.y,
-              pointer.x,
-              pointer.y,
+              state.pointer.x,
+              state.pointer.y,
               distance,
-              150,
-              1.5,
+              155,
+              1.45,
             );
           }
         }
       });
+    };
 
-      if (!reducedMotion) {
-        frame = window.requestAnimationFrame(render);
+    let frame = 0;
+    const render = () => {
+      states.forEach((state) => {
+        if (state.visible) renderSurface(state);
+      });
+      frame = window.requestAnimationFrame(render);
+    };
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      entries.forEach((entry) => {
+        const state = states.find((item) => item.element === entry.target);
+        if (state) {
+          resizeSurface(state);
+          if (reducedMotion) renderSurface(state);
+        }
+      });
+    });
+
+    const visibilityObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const state = states.find((item) => item.element === entry.target);
+          if (state) state.visible = entry.isIntersecting;
+        });
+      },
+      { rootMargin: "120px 0px", threshold: 0 },
+    );
+
+    const pointerCleanups: Array<() => void> = [];
+    states.forEach((state) => {
+      resizeSurface(state);
+      resizeObserver.observe(state.element);
+      visibilityObserver.observe(state.element);
+
+      if (finePointer && !reducedMotion) {
+        const trackPointer = (event: PointerEvent) => {
+          const rect = state.element.getBoundingClientRect();
+          state.pointer.x = event.clientX - rect.left;
+          state.pointer.y = event.clientY - rect.top;
+          state.pointer.active = true;
+        };
+        const clearPointer = () => {
+          state.pointer.active = false;
+        };
+
+        state.element.addEventListener("pointermove", trackPointer, {
+          passive: true,
+        });
+        state.element.addEventListener("pointerleave", clearPointer);
+        pointerCleanups.push(() => {
+          state.element.removeEventListener("pointermove", trackPointer);
+          state.element.removeEventListener("pointerleave", clearPointer);
+        });
       }
-    };
+    });
 
-    const trackPointer = (event: PointerEvent) => {
-      pointer.x = event.clientX;
-      pointer.y = event.clientY;
-      pointer.active = true;
-    };
-
-    const clearPointer = () => {
-      pointer.active = false;
-    };
-
-    resize();
-    render();
-    window.addEventListener("resize", resize);
-    window.addEventListener("pointermove", trackPointer, { passive: true });
-    document.documentElement.addEventListener("pointerleave", clearPointer);
+    if (reducedMotion) {
+      states.forEach(renderSurface);
+    } else {
+      frame = window.requestAnimationFrame(render);
+    }
 
     return () => {
       window.cancelAnimationFrame(frame);
-      window.removeEventListener("resize", resize);
-      window.removeEventListener("pointermove", trackPointer);
-      document.documentElement.removeEventListener("pointerleave", clearPointer);
+      resizeObserver.disconnect();
+      visibilityObserver.disconnect();
+      pointerCleanups.forEach((cleanup) => cleanup());
+      states.forEach((state) => {
+        state.canvas.remove();
+        state.element.classList.remove("particle-surface-host");
+      });
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="particle-network" aria-hidden="true" />;
+  return null;
 }
