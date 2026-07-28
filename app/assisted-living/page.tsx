@@ -24,6 +24,8 @@ export default function AssistedLivingPage() {
       title="Safety systems that support independence."
       intro="Independent consultancy for emergency call, warden call, telecare and grouped living systems across social housing, supported living and individual homes."
       statement="A system is only effective when the technology, call pathway, resident need and operational response work together."
+      iconSrc="/assets/assisted_living.png"
+      iconAlt="Assisted living and warden call service"
       supports={[
         {
           title: "Strategy & option appraisal",
