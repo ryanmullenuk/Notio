@@ -19,14 +19,5 @@ export function MotionHeading({
 }
 
 export function ButtonContent({ label }: { label: string }) {
-  return (
-    <>
-      <span className="button-label-window">
-        <span className="button-label" data-label={label}>
-          {label}
-        </span>
-      </span>
-      <span className="button-arrow" aria-hidden="true" />
-    </>
-  );
+  return <span className="button-label">{label}</span>;
 }
