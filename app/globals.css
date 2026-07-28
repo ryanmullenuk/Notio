@@ -463,8 +463,10 @@ body > .site-header {
 
 .hero-briefing {
   position: relative;
+  display: flex;
   align-self: stretch;
-  min-height: 560px;
+  min-height: 760px;
+  flex-direction: column;
   border: 1px solid rgba(255, 255, 255, 0.22);
   padding: 24px;
   background: rgba(255, 255, 255, 0.035);
@@ -483,9 +485,10 @@ body > .site-header {
 }
 
 .briefing-mark {
+  display: block;
   width: 120px;
   height: 138px;
-  margin: 54px 0 44px;
+  margin: 54px auto 44px;
   object-fit: contain;
 }
 
@@ -506,12 +509,22 @@ body > .site-header {
   line-height: 1.3;
 }
 
-.briefing-list {
-  position: absolute;
-  right: 24px;
-  bottom: 24px;
-  left: 24px;
+.briefing-intro {
   display: grid;
+  margin-top: 28px;
+  color: #c4c1ba;
+  font-size: 0.82rem;
+  line-height: 1.65;
+  gap: 14px;
+}
+
+.briefing-intro p {
+  margin: 0;
+}
+
+.briefing-list {
+  display: grid;
+  margin-top: auto;
   border-top: 1px solid rgba(255, 255, 255, 0.16);
   padding-top: 18px;
   color: #aaa79f;
@@ -1750,7 +1763,7 @@ body > .site-header {
   }
 
   .hero-briefing {
-    min-height: 510px;
+    min-height: 760px;
   }
 
   .split-heading,
@@ -1957,7 +1970,12 @@ body > .site-header {
   .briefing-mark {
     width: 100px;
     height: 115px;
+    margin-block: 42px 36px;
     font-size: 5rem;
+  }
+
+  .briefing-intro {
+    font-size: 0.78rem;
   }
 
   .service-card {
