@@ -135,6 +135,19 @@ export default function Home() {
                 <br />
                 Compliance for organisations.
               </p>
+              <div className="briefing-intro">
+                <p>
+                  Assisted living is about more than technology, it’s about
+                  ensuring independence, safety, and peace of mind for
+                  residents, their families and for housing providers.
+                </p>
+                <p>
+                  At Notio, we provide expert consultancy for Warden Call
+                  systems tailored to social housing, independent living,
+                  almshouses, right to manage (RTM) and extra care schemes.
+                </p>
+                <p>Learn how we can support you and your residents below.</p>
+              </div>
               <div className="briefing-list">
                 <span>Emergency call</span>
                 <span>Fire safety</span>
