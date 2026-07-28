@@ -1393,8 +1393,8 @@ body > .site-header {
   width: 148px;
   height: 148px;
   place-items: center;
-  padding: 14px;
-  background: var(--paper);
+  padding: 0;
+  background: transparent;
 }
 
 .service-cta-icon img {
