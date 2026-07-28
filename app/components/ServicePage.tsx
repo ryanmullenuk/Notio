@@ -153,7 +153,7 @@ export function ServicePage({
               data-scroll-panel
             >
               <img
-                src="/assets/fact_find_call.png"
+                src="/assets/fact_find_call_dark.png"
                 alt=""
                 data-scroll-media
                 data-scroll-distance="42"
