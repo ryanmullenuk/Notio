@@ -72,7 +72,7 @@ export default function DigitalSwitchoverPage() {
             target="_blank"
             rel="noreferrer"
           >
-            Read the government guidance ↗
+            Read the government guidance
           </a>
         </p>
       }
