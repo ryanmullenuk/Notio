@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { MotionHeading } from "../components/MotionPrimitives";
 import { SiteFooter, SiteHeader } from "../components/SiteChrome";
 
 export const metadata: Metadata = {
@@ -24,7 +25,7 @@ export default function PrivacyPolicyPage() {
         <section className="policy-hero">
           <div className="shell">
             <p className="eyebrow">Privacy & data</p>
-            <h1>Privacy policy</h1>
+            <MotionHeading as="h1">Privacy policy</MotionHeading>
             <p>
               How Notio Consulting handles personal information when you use
               this website or contact us.
@@ -140,9 +141,8 @@ export default function PrivacyPolicyPage() {
               <h2>6. Cookies and browser storage</h2>
               <p>
                 This version of the website does not use advertising or
-                marketing cookies. It uses short-lived browser session storage
-                to remember that the opening logo animation has been shown.
-                That setting is removed when the browser session ends.
+                marketing cookies and does not use browser storage to track
+                visitors.
               </p>
               <p>
                 If analytics, embedded booking tools or additional cookies are
