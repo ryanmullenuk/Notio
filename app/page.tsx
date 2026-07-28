@@ -123,9 +123,12 @@ export default function Home() {
                 <span>Notio / Safety brief</span>
                 <span>UK</span>
               </div>
-              <div className="briefing-mark" aria-hidden="true">
-                N
-              </div>
+              <img
+                className="briefing-mark"
+                src="/assets/icon_badge_clear.png"
+                alt=""
+                aria-hidden="true"
+              />
               <p className="briefing-label">Our purpose</p>
               <p className="briefing-statement">
                 Life safety for residents.
@@ -302,7 +305,7 @@ export default function Home() {
             <div className="principle-panel">
               <div className="principle-logo-crop" data-scroll-panel>
                 <img
-                  src="/assets/icon_badge.png"
+                  src="/assets/icon_badge_clear.png"
                   alt="Notio shield badge"
                   width="400"
                   height="460"

@@ -253,6 +253,12 @@ body > .site-header {
 .brand {
   display: inline-flex;
   align-items: center;
+  gap: 12px;
+}
+
+.brand-badge {
+  width: 38px;
+  height: auto;
 }
 
 .brand-logo {
@@ -466,18 +472,10 @@ body > .site-header {
 }
 
 .briefing-mark {
-  display: grid;
   width: 120px;
   height: 138px;
   margin: 54px 0 44px;
-  place-items: center;
-  border: 8px solid var(--yellow);
-  border-radius: 24px 24px 52px 52px;
-  color: var(--yellow);
-  font-size: 6rem;
-  font-weight: 1000;
-  letter-spacing: -0.12em;
-  line-height: 1;
+  object-fit: contain;
 }
 
 .briefing-label {
@@ -1559,8 +1557,24 @@ body > .site-header {
   letter-spacing: 0.14em;
 }
 
+.coming-soon-icon-frame {
+  display: grid;
+  width: 100%;
+  max-height: 260px;
+  margin: 22px 0 10px;
+  place-items: center;
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+
+.coming-soon-icon-frame img {
+  width: 82%;
+  height: 82%;
+  object-fit: contain;
+}
+
 .coming-soon-panel p {
-  margin: 34px 0;
+  margin: 24px 0 34px;
   color: #c8c5bd;
   line-height: 1.75;
 }
@@ -1691,6 +1705,10 @@ body > .site-header {
 
   .brand-logo {
     width: 136px;
+  }
+
+  .brand-badge {
+    width: 32px;
   }
 
   .hero {
