@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ContactForm } from "./components/ContactForm";
+import { ButtonContent, MotionHeading } from "./components/MotionPrimitives";
 import { SiteFooter, SiteHeader } from "./components/SiteChrome";
-import { SplashIntro } from "./components/SplashIntro";
 
 export const metadata: Metadata = {
   title:
@@ -82,7 +82,6 @@ const reviews = [
 export default function Home() {
   return (
     <>
-      <SplashIntro />
       <SiteHeader />
       <main>
         <section className="hero">
@@ -93,11 +92,11 @@ export default function Home() {
                 Independent life-safety consultancy since 2011
               </p>
               <div className="hero-title-lockup">
-                <h1>
+                <MotionHeading as="h1">
                   Clear decisions.
                   <br />
-                  <span>Safer homes.</span>
-                </h1>
+                  <span className="hero-highlight">Safer homes.</span>
+                </MotionHeading>
                 <img
                   className="hero-title-badge"
                   src="/assets/icon_badge.png"
@@ -111,11 +110,10 @@ export default function Home() {
               </p>
               <div className="button-row">
                 <a className="button button-yellow" href="#contact">
-                  Discuss your requirements
-                  <span aria-hidden="true">↗</span>
+                  <ButtonContent label="Discuss your requirements" />
                 </a>
                 <a className="text-link" href="#services">
-                  Explore our services <span aria-hidden="true">↓</span>
+                  Explore our services
                 </a>
               </div>
               <ul className="hero-proof" aria-label="Notio strengths">
@@ -154,7 +152,9 @@ export default function Home() {
             <div className="section-heading split-heading">
               <div>
                 <p className="eyebrow eyebrow-dark">Who we support</p>
-                <h2>Advice that fits the people and the property.</h2>
+                <MotionHeading as="h2">
+                  Advice that fits the people and the property.
+                </MotionHeading>
               </div>
               <p>
                 The right solution starts with a clear understanding of risk,
@@ -171,7 +171,7 @@ export default function Home() {
                   specifications, procurement, compliance planning and
                   programme delivery across occupied estates.
                 </p>
-                <a href="#contact">Start an organisational enquiry →</a>
+                <a href="#contact">Start an organisational enquiry</a>
               </article>
               <article className="audience-card">
                 <p className="card-index">B</p>
@@ -181,7 +181,7 @@ export default function Home() {
                   into a clear, costed route forward for boards and
                   decision-makers.
                 </p>
-                <a href="#contact">Discuss your scheme →</a>
+                <a href="#contact">Discuss your scheme</a>
               </article>
               <article className="audience-card audience-card-dark">
                 <p className="card-index">C</p>
@@ -191,7 +191,7 @@ export default function Home() {
                   alarms, telecare, access, detection or safety options for a
                   relative’s home.
                 </p>
-                <a href="#contact">Ask for resident support →</a>
+                <a href="#contact">Ask for resident support</a>
               </article>
             </div>
           </div>
@@ -202,7 +202,9 @@ export default function Home() {
             <div className="section-heading split-heading">
               <div>
                 <p className="eyebrow">Core services</p>
-                <h2>Independent thinking across connected safety systems.</h2>
+                <MotionHeading as="h2">
+                  Independent thinking across connected safety systems.
+                </MotionHeading>
               </div>
               <p>
                 From one-off advice to an estate-wide programme, Notio helps
@@ -212,7 +214,11 @@ export default function Home() {
             </div>
             <div className="service-grid">
               {services.map((service) => (
-                <a className="service-card" href={service.href} key={service.href}>
+                <a
+                  className="service-card motion-cursor-card"
+                  href={service.href}
+                  key={service.href}
+                >
                   <span className="service-number">{service.number}</span>
                   <div>
                     <h3>{service.title}</h3>
@@ -221,8 +227,9 @@ export default function Home() {
                       <span className="service-status">{service.status}</span>
                     ) : null}
                   </div>
-                  <span className="service-arrow" aria-hidden="true">
-                    ↗
+                  <span className="service-arrow" aria-hidden="true" />
+                  <span className="cursor-label" aria-hidden="true">
+                    View service
                   </span>
                 </a>
               ))}
@@ -241,7 +248,9 @@ export default function Home() {
           <div className="shell">
             <div className="section-heading">
               <p className="eyebrow eyebrow-dark">How we work</p>
-              <h2>Evidence first. Clear advice. A workable route forward.</h2>
+              <MotionHeading as="h2">
+                Evidence first. Clear advice. A workable route forward.
+              </MotionHeading>
             </div>
             <ol className="process-grid">
               <li>
@@ -284,7 +293,9 @@ export default function Home() {
           <div className="shell principle-grid">
             <div className="principle-copy">
               <p className="eyebrow eyebrow-dark">Why Notio</p>
-              <h2>Knowledge only matters when it leads to a better decision.</h2>
+              <MotionHeading as="h2">
+                Knowledge only matters when it leads to a better decision.
+              </MotionHeading>
               <p>
                 “Notio” comes from the Latin for understanding, knowledge and
                 conception. It reflects a simple principle: good consultancy
@@ -297,12 +308,14 @@ export default function Home() {
               </p>
             </div>
             <div className="principle-panel">
-              <div className="principle-logo-crop">
+              <div className="principle-logo-crop" data-scroll-panel>
                 <img
-                  src="/notio-logo.jpg"
-                  alt="Notio Consulting shield logo"
-                  width="3415"
-                  height="3415"
+                  src="/assets/icon_badge.png"
+                  alt="Notio shield badge"
+                  width="400"
+                  height="460"
+                  data-scroll-media
+                  data-scroll-distance="54"
                 />
               </div>
               <p>
@@ -318,14 +331,16 @@ export default function Home() {
             <div className="section-heading split-heading">
               <div>
                 <p className="eyebrow">Client feedback</p>
-                <h2>Trusted when the detail matters.</h2>
+                <MotionHeading as="h2">
+                  Trusted when the detail matters.
+                </MotionHeading>
               </div>
               <p>
                 Feedback from organisations supported by Notio across life
                 safety and housing projects.
               </p>
             </div>
-            <div className="review-track">
+            <div className="review-track" data-native-scroll>
               {reviews.map((review, index) => (
                 <blockquote className="review-card" key={review.title}>
                   <span className="quote-mark" aria-hidden="true">
@@ -346,7 +361,9 @@ export default function Home() {
           <div className="shell contact-grid">
             <div className="contact-copy">
               <p className="eyebrow eyebrow-dark">Start a conversation</p>
-              <h2>Tell us what you are trying to solve.</h2>
+              <MotionHeading as="h2">
+                Tell us what you are trying to solve.
+              </MotionHeading>
               <p>
                 Whether you manage an estate, represent an RTM company or are
                 looking for guidance for a family member, a short fact-find is

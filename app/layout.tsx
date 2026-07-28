@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { MotionSystem } from "./components/MotionSystem";
 import { ParticleBackground } from "./components/ParticleBackground";
 import "./globals.css";
 
@@ -61,6 +62,7 @@ export default function RootLayout({
     <html lang="en-GB">
       <body>
         <ParticleBackground />
+        <MotionSystem />
         {children}
       </body>
     </html>
