@@ -24,7 +24,7 @@ export default function DoorEntryPage() {
       title="Secure access without creating new barriers."
       intro="Consultancy for audio, video and connected door entry, access control and communal security systems across housing and independent living schemes."
       statement="Good access control balances security, accessibility, fire strategy, resident experience and day-to-day management."
-      iconSrc="/assets/door_entry.png"
+      iconSrc="/assets/door_entry_dark.png"
       iconAlt="Door entry and access control service"
       supports={[
         {
