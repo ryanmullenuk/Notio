@@ -97,11 +97,6 @@ export default function Home() {
                   <br />
                   <span className="hero-highlight">Safer homes.</span>
                 </MotionHeading>
-                <img
-                  className="hero-title-badge"
-                  src="/assets/icon_badge.png"
-                  alt="Notio shield badge"
-                />
               </div>
               <p className="hero-lead">
                 Specialist advice for housing providers, RTM companies,
@@ -227,10 +222,7 @@ export default function Home() {
                       <span className="service-status">{service.status}</span>
                     ) : null}
                   </div>
-                  <span className="service-arrow" aria-hidden="true" />
-                  <span className="cursor-label" aria-hidden="true">
-                    View service
-                  </span>
+                  <span className="cursor-label" aria-hidden="true" />
                 </a>
               ))}
             </div>

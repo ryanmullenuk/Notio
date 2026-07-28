@@ -55,6 +55,7 @@ body > :not(.particle-network) {
 
 .motion-heading {
   overflow: hidden;
+  padding-top: 0.12em;
 }
 
 .motion-heading-inner {
@@ -297,7 +298,6 @@ body > .site-header {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
   min-height: 42px;
   padding: 0 18px;
   background: var(--yellow);
@@ -356,14 +356,6 @@ body > .site-header {
   max-width: 820px;
 }
 
-.hero-title-badge {
-  position: absolute;
-  right: 0;
-  bottom: 4px;
-  width: 88px;
-  height: auto;
-}
-
 .hero-copy h1 .hero-highlight {
   color: var(--yellow);
 }
@@ -388,8 +380,7 @@ body > .site-header {
   display: inline-flex;
   min-height: 56px;
   align-items: center;
-  justify-content: space-between;
-  gap: 30px;
+  justify-content: center;
   border: 0;
   padding: 0 24px;
   cursor: pointer;
@@ -397,74 +388,10 @@ body > .site-header {
   font-weight: 900;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  transition:
-    background 180ms ease;
-}
-
-.button-label-window {
-  display: block;
-  overflow: hidden;
-  line-height: 1.2;
 }
 
 .button-label {
-  position: relative;
   display: block;
-  transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.button-label::after {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: max-content;
-  content: attr(data-label);
-}
-
-.button:hover .button-label,
-.button:focus-visible .button-label,
-.header-contact:hover .button-label,
-.header-contact:focus-visible .button-label {
-  transform: translate3d(0, -100%, 0);
-}
-
-.button-arrow {
-  position: relative;
-  display: block;
-  width: 17px;
-  height: 17px;
-  flex: 0 0 17px;
-  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.button-arrow::before {
-  position: absolute;
-  top: 8px;
-  left: 1px;
-  width: 15px;
-  height: 2px;
-  background: currentColor;
-  content: "";
-  transform: rotate(-45deg);
-  transform-origin: center;
-}
-
-.button-arrow::after {
-  position: absolute;
-  top: 1px;
-  right: 1px;
-  width: 7px;
-  height: 7px;
-  border-top: 2px solid currentColor;
-  border-right: 2px solid currentColor;
-  content: "";
-}
-
-.button:hover .button-arrow,
-.button:focus-visible .button-arrow,
-.header-contact:hover .button-arrow,
-.header-contact:focus-visible .button-arrow {
-  transform: translate3d(3px, -3px, 0);
 }
 
 .button-yellow {
@@ -685,7 +612,7 @@ body > .site-header {
   align-items: center;
   overflow: hidden;
   border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-  grid-template-columns: 100px 1fr 60px;
+  grid-template-columns: 100px 1fr;
   transition:
     color 180ms ease,
     background 180ms ease,
@@ -745,55 +672,19 @@ body > .site-header {
   color: rgba(23, 23, 22, 0.72);
 }
 
-.service-arrow {
-  position: relative;
-  justify-self: end;
-  width: 20px;
-  height: 20px;
-}
-
-.service-arrow::before {
-  position: absolute;
-  top: 10px;
-  left: 0;
-  width: 19px;
-  height: 2px;
-  background: currentColor;
-  content: "";
-  transform: rotate(-45deg);
-}
-
-.service-arrow::after {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 9px;
-  height: 9px;
-  border-top: 2px solid currentColor;
-  border-right: 2px solid currentColor;
-  content: "";
-}
-
 .cursor-label {
   position: absolute;
   z-index: 3;
   top: var(--cursor-y);
   left: var(--cursor-x);
-  display: grid;
-  width: 78px;
-  height: 78px;
-  place-items: center;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--yellow);
   border-radius: 50%;
   background: var(--ink);
-  color: var(--white);
-  font-size: 0.61rem;
-  font-weight: 900;
-  letter-spacing: 0.05em;
   opacity: 0;
   pointer-events: none;
-  text-align: center;
-  text-transform: uppercase;
-  transform: translate3d(-50%, -50%, 0) scale(0.72);
+  transform: translate3d(-50%, -50%, 0) scale(0.65);
   transition:
     opacity 150ms ease,
     transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -1284,10 +1175,10 @@ body > .site-header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   padding: 28px;
-  background: var(--paper);
-  color: var(--ink);
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--white);
 }
 
 .service-code-top {
@@ -1298,7 +1189,7 @@ body > .site-header {
 }
 
 .service-code-top span {
-  color: var(--muted);
+  color: #aaa79f;
   font-size: 0.65rem;
   font-weight: 900;
   letter-spacing: 0.12em;
@@ -1306,7 +1197,7 @@ body > .site-header {
 }
 
 .service-code-top strong {
-  color: var(--ink);
+  color: var(--white);
   font-family: var(--display);
   font-size: 1rem;
   font-weight: 900;
@@ -1330,9 +1221,9 @@ body > .site-header {
 
 .service-code p {
   margin: 0;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
   padding-top: 24px;
-  color: var(--muted);
+  color: #c8c5bd;
   line-height: 1.7;
 }
 
@@ -1750,10 +1641,6 @@ body > .site-header {
     font-size: clamp(3.8rem, 9vw, 6rem);
   }
 
-  .hero-title-badge {
-    width: 76px;
-  }
-
   .principle-grid,
   .contact-grid,
   .deliverable-grid,
@@ -1826,11 +1713,6 @@ body > .site-header {
   .hero-title-lockup {
     display: grid;
     gap: 26px;
-  }
-
-  .hero-title-badge {
-    position: static;
-    width: 72px;
   }
 
   .hero-lead,
