@@ -24,6 +24,8 @@ export default function SmokeDetectionPage() {
       title="Detection strategies grounded in the building and its residents."
       intro="Independent support for domestic and communal fire detection across housing, supported living, sheltered schemes and other multi-occupancy residential settings."
       statement="The right detection approach depends on the fire strategy, premises, resident risk, management arrangements and intended response."
+      iconSrc="/assets/fire_safety.png"
+      iconAlt="Fire and smoke detection service"
       supports={[
         {
           title: "Information & gap review",
