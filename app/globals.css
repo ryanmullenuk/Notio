@@ -1680,7 +1680,63 @@ h3 {
   }
 
   .header-contact {
+    display: none;
+  }
+
+  .mobile-menu {
+    position: relative;
+    z-index: 80;
+    display: block;
     margin-left: auto;
+  }
+
+  .mobile-menu[open]::before {
+    position: fixed;
+    z-index: 0;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.72);
+    content: "";
+  }
+
+  .mobile-menu summary {
+    position: relative;
+    z-index: 2;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 9px 13px;
+    cursor: pointer;
+    color: var(--white);
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.07em;
+    list-style: none;
+    text-transform: uppercase;
+  }
+
+  .mobile-menu summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .mobile-menu-panel {
+    position: absolute;
+    z-index: 2;
+    top: calc(100% + 12px);
+    right: 0;
+    display: flex;
+    width: min(310px, calc(100vw - 32px));
+    flex-direction: column;
+    border: 1px solid var(--yellow);
+    padding: 12px;
+    background: #111110;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.72);
+    isolation: isolate;
+    opacity: 1;
+  }
+
+  .mobile-menu-panel a {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+    padding: 13px 10px;
+    font-size: 0.82rem;
+    font-weight: 800;
   }
 
   .hero-grid,
@@ -1748,66 +1804,6 @@ h3 {
 
   .brand-logo {
     width: 136px;
-  }
-
-  .header-contact {
-    display: none;
-  }
-
-  .mobile-menu {
-    position: relative;
-    z-index: 80;
-    display: block;
-    margin-left: auto;
-  }
-
-  .mobile-menu[open]::before {
-    position: fixed;
-    z-index: 0;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.72);
-    content: "";
-  }
-
-  .mobile-menu summary {
-    position: relative;
-    z-index: 2;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    padding: 9px 13px;
-    cursor: pointer;
-    color: var(--white);
-    font-size: 0.68rem;
-    font-weight: 900;
-    letter-spacing: 0.07em;
-    list-style: none;
-    text-transform: uppercase;
-  }
-
-  .mobile-menu summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .mobile-menu-panel {
-    position: absolute;
-    z-index: 2;
-    top: calc(100% + 12px);
-    right: 0;
-    display: flex;
-    width: min(310px, calc(100vw - 32px));
-    flex-direction: column;
-    border: 1px solid var(--yellow);
-    padding: 12px;
-    background: #111110;
-    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.72);
-    isolation: isolate;
-    opacity: 1;
-  }
-
-  .mobile-menu-panel a {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.13);
-    padding: 13px 10px;
-    font-size: 0.82rem;
-    font-weight: 800;
   }
 
   .hero {
