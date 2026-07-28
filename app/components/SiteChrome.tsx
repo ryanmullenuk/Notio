@@ -18,13 +18,11 @@ export function SiteHeader() {
       <header className="site-header">
         <div className="shell header-inner">
           <a className="brand" href="/" aria-label="Notio Consulting home">
-            <span className="brand-mark" aria-hidden="true">
-              N
-            </span>
-            <span className="brand-copy">
-              <strong>NOTIO</strong>
-              <small>CONSULTING</small>
-            </span>
+            <img
+              className="brand-logo"
+              src="/assets/logo_top_left.png"
+              alt="Notio Consulting"
+            />
           </a>
 
           <nav className="desktop-nav" aria-label="Main navigation">
@@ -64,13 +62,11 @@ export function SiteFooter() {
       <div className="shell footer-grid">
         <div>
           <a className="brand brand-footer" href="/" aria-label="Notio Consulting home">
-            <span className="brand-mark" aria-hidden="true">
-              N
-            </span>
-            <span className="brand-copy">
-              <strong>NOTIO</strong>
-              <small>CONSULTING</small>
-            </span>
+            <img
+              className="brand-logo"
+              src="/assets/logo_top_left.png"
+              alt="Notio Consulting"
+            />
           </a>
           <p>
             Independent consultancy for life safety, connected homes and

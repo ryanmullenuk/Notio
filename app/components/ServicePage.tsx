@@ -6,6 +6,8 @@ type ServicePageProps = {
   title: string;
   intro: string;
   statement: string;
+  iconSrc: string;
+  iconAlt: string;
   supports: { title: string; text: string }[];
   deliverables: string[];
   considerations: string[];
@@ -19,6 +21,8 @@ export function ServicePage({
   title,
   intro,
   statement,
+  iconSrc,
+  iconAlt,
   supports,
   deliverables,
   considerations,
@@ -49,8 +53,13 @@ export function ServicePage({
               </div>
             </div>
             <div className="service-code">
-              <span>Notio service</span>
-              <strong>{code}</strong>
+              <div className="service-code-top">
+                <span>Notio service</span>
+                <strong>{code}</strong>
+              </div>
+              <div className="service-icon-frame">
+                <img src={iconSrc} alt={iconAlt} />
+              </div>
               <p>{statement}</p>
             </div>
           </div>
@@ -123,6 +132,9 @@ export function ServicePage({
             <div>
               <p className="eyebrow">A practical first step</p>
               <h2>Start with a free 30-minute fact-find call.</h2>
+            </div>
+            <div className="service-cta-icon" aria-hidden="true">
+              <img src="/assets/fact_find_call.png" alt="" />
             </div>
             <a className="button button-yellow" href="/#contact">
               Arrange a conversation <span aria-hidden="true">↗</span>
