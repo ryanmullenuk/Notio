@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 export default function SmokeDetectionPage() {
   return (
     <ServicePage
-      code="04 / FS"
+      code="03 / FS"
       eyebrow="Fire & smoke detection"
       title="Detection strategies grounded in the building and its residents."
       intro="Independent support for domestic and communal fire detection across housing, supported living, sheltered schemes and other multi-occupancy residential settings."
