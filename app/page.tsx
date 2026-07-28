@@ -22,27 +22,34 @@ export const metadata: Metadata = {
 const services = [
   {
     number: "01",
-    title: "Assisted living & warden call",
+    title: "ASSISTED LIVING & WARDEN CALL",
     text: "Independent advice on emergency call, grouped living and telecare systems, from early strategy through procurement and delivery.",
     href: "/assisted-living",
   },
   {
     number: "02",
-    title: "Door entry & access control",
+    title: "DOOR ENTRY & ACCESS CONTROL",
     text: "Clear requirements for secure, accessible entry systems across occupied housing, communal areas and individual homes.",
     href: "/door-entry-systems",
   },
   {
     number: "03",
-    title: "Digital switchover 2027",
+    title: "FIRE & SMOKE DETECTION",
+    text: "Practical support with domestic and communal detection requirements, surveys, specifications and delivery assurance.",
+    href: "/smoke-detection-systems",
+  },
+  {
+    number: "04",
+    title: "DIGITAL SWITCHOVER 2027",
     text: "Estate readiness, risk prioritisation and transition planning for telecare and other services affected by digital migration.",
     href: "/digital-switchover-2027",
   },
   {
-    number: "04",
-    title: "Fire & smoke detection",
-    text: "Practical support with domestic and communal detection requirements, surveys, specifications and delivery assurance.",
-    href: "/smoke-detection-systems",
+    number: "05",
+    title: "TENDER SUPPORT",
+    text: "A dedicated tender support service page is being prepared and will be added shortly.",
+    href: "/tender-support",
+    status: "COMING SOON",
   },
 ];
 
@@ -85,11 +92,18 @@ export default function Home() {
               <p className="eyebrow">
                 Independent life-safety consultancy since 2011
               </p>
-              <h1>
-                Clear decisions.
-                <br />
-                <span>Safer homes.</span>
-              </h1>
+              <div className="hero-title-lockup">
+                <h1>
+                  Clear decisions.
+                  <br />
+                  <span>Safer homes.</span>
+                </h1>
+                <img
+                  className="hero-title-badge"
+                  src="/assets/icon_badge.png"
+                  alt="Notio shield badge"
+                />
+              </div>
               <p className="hero-lead">
                 Specialist advice for housing providers, RTM companies,
                 residents and families navigating warden call, telecare, fire
@@ -203,6 +217,9 @@ export default function Home() {
                   <div>
                     <h3>{service.title}</h3>
                     <p>{service.text}</p>
+                    {service.status ? (
+                      <span className="service-status">{service.status}</span>
+                    ) : null}
                   </div>
                   <span className="service-arrow" aria-hidden="true">
                     ↗

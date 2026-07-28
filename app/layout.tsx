@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { ParticleBackground } from "./components/ParticleBackground";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -58,7 +59,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-GB">
-      <body>{children}</body>
+      <body>
+        <ParticleBackground />
+        {children}
+      </body>
     </html>
   );
 }

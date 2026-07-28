@@ -7,14 +7,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/assisted-living",
     "/door-entry-systems",
-    "/digital-switchover-2027",
     "/smoke-detection-systems",
+    "/digital-switchover-2027",
+    "/tender-support",
     "/privacy-policy",
   ];
 
   return routes.map((route) => ({
     url: `https://notio.uk${route}`,
-    lastModified: new Date("2026-07-27"),
+    lastModified: new Date("2026-07-28"),
     changeFrequency: route === "" ? "monthly" : "yearly",
     priority: route === "" ? 1 : route === "/privacy-policy" ? 0.3 : 0.8,
   }));
