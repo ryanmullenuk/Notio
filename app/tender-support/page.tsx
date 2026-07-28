@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ButtonContent, MotionHeading } from "../components/MotionPrimitives";
 import { SiteFooter, SiteHeader } from "../components/SiteChrome";
 
 export const metadata: Metadata = {
@@ -18,7 +19,7 @@ export default function TenderSupportPage() {
           <div className="shell coming-soon-grid">
             <div>
               <p className="eyebrow">Notio service / 05</p>
-              <h1>TENDER SUPPORT</h1>
+              <MotionHeading as="h1">TENDER SUPPORT</MotionHeading>
             </div>
             <div className="coming-soon-panel">
               <span>COMING SOON</span>
@@ -28,7 +29,7 @@ export default function TenderSupportPage() {
                 contact Notio to arrange an initial discussion.
               </p>
               <a className="button button-yellow" href="/#contact">
-                Discuss a requirement <span aria-hidden="true">↗</span>
+                <ButtonContent label="Discuss a requirement" />
               </a>
             </div>
           </div>
