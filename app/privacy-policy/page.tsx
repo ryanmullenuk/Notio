@@ -23,14 +23,26 @@ export default function PrivacyPolicyPage() {
       <SiteHeader />
       <main className="policy-main">
         <section className="policy-hero">
-          <div className="shell">
-            <p className="eyebrow">Privacy & data</p>
-            <MotionHeading as="h1">Privacy policy</MotionHeading>
-            <p>
-              How Notio Consulting handles personal information when you use
-              this website or contact us.
-            </p>
-            <span>Last updated: 27 July 2026</span>
+          <div className="shell policy-hero-grid">
+            <div className="policy-hero-copy">
+              <p className="eyebrow">Privacy & data</p>
+              <MotionHeading as="h1">Privacy policy</MotionHeading>
+              <p>
+                How Notio Consulting handles personal information when you use
+                this website or contact us.
+              </p>
+              <span>Last updated: 27 July 2026</span>
+            </div>
+            <div className="policy-hero-icon" data-scroll-panel>
+              <img
+                src="/assets/privacy_data_qa_dark.png"
+                alt="Privacy and data questions and answers"
+                width="1200"
+                height="1200"
+                data-scroll-media
+                data-scroll-distance="34"
+              />
+            </div>
           </div>
         </section>
         <div className="shell policy-layout">
