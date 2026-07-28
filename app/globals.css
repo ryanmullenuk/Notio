@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Heavitas";
+  src: url("/assets/Heavitas.ttf") format("truetype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400 1000;
+}
+
 :root {
   --ink: #171716;
   --ink-soft: #292826;
@@ -9,6 +17,7 @@
   --muted: #6b6963;
   --line: rgba(23, 23, 22, 0.18);
   --shell: min(1180px, calc(100vw - 48px));
+  --display: "Heavitas", Impact, "Arial Black", sans-serif;
 }
 
 * {
@@ -54,6 +63,13 @@ img,
 video {
   display: block;
   max-width: 100%;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--display);
+  font-synthesis: none;
 }
 
 ::selection {
@@ -186,42 +202,11 @@ video {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
 }
 
-.brand-mark {
-  display: grid;
-  width: 42px;
-  height: 48px;
-  place-items: center;
-  border: 3px solid currentColor;
-  border-radius: 9px 9px 18px 18px;
-  color: var(--yellow);
-  font-size: 1.65rem;
-  font-weight: 1000;
-  letter-spacing: -0.09em;
-  line-height: 1;
-}
-
-.brand-copy {
-  display: flex;
-  flex-direction: column;
-  line-height: 0.88;
-}
-
-.brand-copy strong {
-  color: var(--yellow);
-  font-size: 1.55rem;
-  font-weight: 1000;
-  letter-spacing: -0.07em;
-}
-
-.brand-copy small {
-  margin-top: 6px;
-  color: currentColor;
-  font-size: 0.62rem;
-  font-weight: 900;
-  letter-spacing: 0.14em;
+.brand-logo {
+  width: 164px;
+  height: auto;
 }
 
 .desktop-nav {
@@ -285,23 +270,11 @@ video {
 .fingerprint-field {
   position: absolute;
   inset: 0;
-  opacity: 0.28;
-  background:
-    radial-gradient(
-      ellipse at 82% 42%,
-      transparent 0 8%,
-      rgba(239, 178, 25, 0.36) 8.3% 8.8%,
-      transparent 9.1% 13%,
-      rgba(239, 178, 25, 0.3) 13.3% 13.9%,
-      transparent 14.2% 19%,
-      rgba(239, 178, 25, 0.26) 19.3% 20%,
-      transparent 20.3% 27%,
-      rgba(239, 178, 25, 0.22) 27.3% 28%,
-      transparent 28.3% 36%,
-      rgba(239, 178, 25, 0.16) 36.3% 37%,
-      transparent 37.3%
-    ),
-    linear-gradient(90deg, transparent 0 75%, rgba(239, 178, 25, 0.05) 75%);
+  opacity: 0.065;
+  background-image: url("/assets/fingerprint_background.png");
+  background-position: 88% 50%;
+  background-repeat: no-repeat;
+  background-size: auto 118%;
   pointer-events: none;
 }
 
@@ -1120,31 +1093,55 @@ video {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.45);
   padding: 28px;
-  background: rgba(255, 255, 255, 0.035);
+  background: var(--paper);
+  color: var(--ink);
 }
 
-.service-code > span {
-  color: #99968f;
+.service-code-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.service-code-top span {
+  color: var(--muted);
   font-size: 0.65rem;
   font-weight: 900;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
-.service-code strong {
-  color: var(--yellow);
-  font-size: clamp(4rem, 8vw, 7rem);
-  font-weight: 1000;
-  letter-spacing: -0.08em;
+.service-code-top strong {
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.service-icon-frame {
+  display: grid;
+  width: 100%;
+  max-height: 300px;
+  place-items: center;
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+
+.service-icon-frame img {
+  width: 84%;
+  height: 84%;
+  object-fit: contain;
 }
 
 .service-code p {
   margin: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid var(--line);
   padding-top: 24px;
-  color: #c5c2ba;
+  color: var(--muted);
   line-height: 1.7;
 }
 
@@ -1285,15 +1282,30 @@ video {
 }
 
 .service-cta-inner {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  display: grid;
+  align-items: center;
+  grid-template-columns: minmax(0, 1fr) 148px auto;
   gap: 60px;
 }
 
 .service-cta h2 {
   max-width: 760px;
   font-size: clamp(2.4rem, 4.5vw, 4.6rem);
+}
+
+.service-cta-icon {
+  display: grid;
+  width: 148px;
+  height: 148px;
+  place-items: center;
+  padding: 14px;
+  background: var(--paper);
+}
+
+.service-cta-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .policy-main {
@@ -1472,19 +1484,8 @@ video {
     min-height: 70px;
   }
 
-  .brand-mark {
-    width: 35px;
-    height: 40px;
-    border-width: 2px;
-    font-size: 1.35rem;
-  }
-
-  .brand-copy strong {
-    font-size: 1.3rem;
-  }
-
-  .brand-copy small {
-    font-size: 0.53rem;
+  .brand-logo {
+    width: 136px;
   }
 
   .header-contact {
@@ -1691,11 +1692,11 @@ video {
   }
 
   .service-code {
-    min-height: 420px;
+    min-height: 500px;
   }
 
-  .service-code strong {
-    font-size: 5rem;
+  .service-icon-frame {
+    max-height: 320px;
   }
 
   .service-note {
@@ -1705,11 +1706,16 @@ video {
 
   .service-cta-inner {
     align-items: flex-start;
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 
   .service-cta h2 {
     font-size: 2.7rem;
+  }
+
+  .service-cta-icon {
+    width: 120px;
+    height: 120px;
   }
 
   .policy-hero {
