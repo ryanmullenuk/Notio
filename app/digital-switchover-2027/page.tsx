@@ -24,8 +24,8 @@ export default function DigitalSwitchoverPage() {
       title="Move from analogue without losing sight of the resident."
       intro="Readiness, risk and migration support for housing providers and organisations responsible for telecare, emergency call and other services affected by the UK digital phone switchover."
       statement="This is an operational life-safety change, not simply a replacement of telephone lines or equipment."
-      iconSrc="/assets/digital_switchover_refined.png"
-      iconAlt="Digital switchover service"
+      iconSrc="/assets/digital_2027_calendar_dark.png"
+      iconAlt="Calendar marking January 2027 for the digital switchover"
       supports={[
         {
           title: "Readiness assessment",
