@@ -51,6 +51,13 @@ const services = [
     href: "/tender-support",
     status: "COMING SOON",
   },
+  {
+    number: "06",
+    title: "XLA — EXPERIENCE LEVEL AGREEMENT",
+    text: "Embedded support that turns customer and team experience into clear measures, shared outcomes and a practical improvement plan.",
+    href: "/xla",
+    status: "COMING SOON",
+  },
 ];
 
 const reviews = [
