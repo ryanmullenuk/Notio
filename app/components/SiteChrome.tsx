@@ -6,6 +6,7 @@ const navigation = [
   { label: "FIRE SAFETY", href: "/smoke-detection-systems" },
   { label: "DIGITAL 2027", href: "/digital-switchover-2027" },
   { label: "TENDER SUPPORT", href: "/tender-support" },
+  { label: "XLA", href: "/xla" },
 ];
 
 export function SiteHeader() {
